@@ -38,15 +38,16 @@ def add():
 
 @app.route('/delete', methods=['POST'])
 def delete():
-    query = json.loads(request.form['document'])
+    query = json.loads(request.form['delete-filter'])
     db.games.delete_one(query)
     return redirect(url_for('index_with_page', page_number=0))
 
 
 @app.route('/update', methods=['POST'])
 def update():
-    query = json.loads(request.form['document'])
-    db.games.update_one(query)
+    query = json.loads(request.form['filter-update'])
+    settings = json.loads(request.form['update-settings'])
+    db.games.update_one(query, settings)
     return redirect(url_for('index_with_page', page_number=0))
 
 
