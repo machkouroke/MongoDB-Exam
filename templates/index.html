@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Table 02</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		<link rel="stylesheet" href="../static/css/style.css">
+
+	</head>
+	<body>
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-md-6 text-center mb-5">
+						<h2 class="heading-section">Game Data</h2>
+					</div>
+				</div>
+				<form action="/filter" method="post">
+					<div class="form-group">
+						<label for="filter">Filtre</label>
+						<div class="d-flex ">
+							<input type="text" class="form-control mx-2" id="filter"
+							       placeholder="Saissisez votre filtre" name="filter">
+							<button type="submit" class="btn btn-primary">Filtrer</button>
+						</div>
+					</div>
+				</form>
+				<form action="/add" method="post">
+					<div class="form-group">
+						<label for="document">Ajouter Un document</label>
+						<div class="d-flex ">
+							<textarea class="form-control" id="document" rows="3"
+							          placeholder="Saissisez le document au format JSON" name="document"></textarea>
+							<button type="submit" class="btn btn-primary mx-2 my-3">Ajouter</button>
+						</div>
+					</div>
+				</form>
+				<form action="/delete" method="post">
+					<div class="form-group">
+					<label for="add">Supprimer Un document</label>
+					<div class="d-flex ">
+						<input type="password" class="form-control mx-2" id="filter"
+						       placeholder="Saissisez votre filtre">
+
+						<button type="submit" class="btn btn-primary mx-2 my-3">Supprimer</button>
+					</div>
+				</div>
+				</form>
+
+				<form action="/add" method="post">
+					<div class="form-group">
+					<label for="add">Mettre à jour un documents</label>
+					<div class="d-flex ">
+						<input type="password" class="form-control mx-2" id="filter"
+						       placeholder="Saissisez votre filtre">
+						<input type="password" class="form-control mx-2" id="filter"
+						       placeholder="Saissisez votre modification">
+						<button type="submit" class="btn btn-primary mx-2 my-3">Update</button>
+					</div>
+				</div>
+				</form>
+
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="table-wrap">
+							<table class="table">
+								<thead class="thead-dark">
+									<tr>
+										<th>Rank</th>
+										<th>Name</th>
+										<th>Platform</th>
+										<th>Year</th>
+										<th>Global_Sales</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for game in games %}
+										<tr>
+
+											<td>{{ game["Rank"] }}</td>
+											<td>{{ game["Name"] }}</td>
+											<td>{{ game["Platform"] }}</td>
+											<td>{{ game['Year'] }}</td>
+											<td>{{ game["Global_Sales"] }}</td>
+										</tr>
+									{% endfor %}
+
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<script src="../static/js/jquery.min.js"></script>
+		<script src="../static/js/popper.js"></script>
+		<script src="../static/js/bootstrap.min.js"></script>
+		<script src="../static/js/main.js"></script>
+
+	</body>
+</html>
+
